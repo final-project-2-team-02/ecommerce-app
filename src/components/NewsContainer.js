@@ -1,14 +1,14 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const NewsContainer = ({ el }) => {
+const NewsContainer = ({ data }) => {
   return (
     <Card style={styles.card}>
-      <Card.Img variant="top" src={el.urlToImage} style={styles.img} />
+      <Card.Img variant="top" src={data.urlToImage} style={styles.img} />
       <Card.Body>
-        <Card.Text style={styles.source}>{el.source.name}</Card.Text>
-        <Card.Title style={styles.title}>{el.title}</Card.Title>
-        <Card.Text style={styles.desc}>{el.description}</Card.Text>
+        <Card.Text style={styles.source}>{data.source.name}</Card.Text>
+        <Card.Title style={styles.title}>{data.title}</Card.Title>
+        <Card.Text style={styles.desc}>{data.description}</Card.Text>
         <Button variant="primary" style={styles.btn}>
           Next Page
         </Button>

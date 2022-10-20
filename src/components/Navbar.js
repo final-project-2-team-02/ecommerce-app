@@ -8,7 +8,7 @@ const Navbar = () => {
         <Link style={styles.navItem} to="/">
           Indonesia
         </Link>
-        <Link style={styles.navItem} to="/programmming">
+        <Link style={styles.navItem} to="/programming">
           Programming
         </Link>
         <Link style={styles.navItem} to="/covid-19">

@@ -1,10 +1,10 @@
 import NewsContainer from "../components/NewsContainer";
 
-const Indonesia = ({ data }) => {
+const Indonesia = ({ datas }) => {
   return (
     <div style={styles.container}>
-      {data.map((el, i) => (
-        <NewsContainer el={el} key={i}/>
+      {datas.map((data, i) => (
+        <NewsContainer data={data} key={i}/>
       ))}
     </div>
   );

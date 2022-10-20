@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-export const useApp = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export const useIndonesia = () => {
+  const [dataIndonesia, setDataIndonesia] = useState([]);
+  const [loadingIndonesia, setLoadingIndonesia] = useState(true);
+  const [errorIndonesia, setErrorIndonesia] = useState(null);
 
   useEffect(() => {
     fetch(
@@ -16,17 +16,17 @@ export const useApp = () => {
         return res.json();
       })
       .then((data) => {
-        setData(data.articles);
-        setError(null);
+        setDataIndonesia(data.articles);
+        setErrorIndonesia(null);
       })
       .catch((err) => {
         console.log(err.messages);
-        setData([]);
+        setDataIndonesia([]);
       })
       .finally(() => {
-        setLoading(false);
+        setLoadingIndonesia(false);
       });
   }, []);
 
-  return { data, loading, error };
+  return { dataIndonesia, loadingIndonesia, errorIndonesia };
 };
