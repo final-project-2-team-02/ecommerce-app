@@ -8,9 +8,13 @@ const NewsContainer = ({ el }) => {
       <Card.Body>
         <Card.Text style={styles.source}>{el.source.name}</Card.Text>
         <Card.Title style={styles.title}>{el.title}</Card.Title>
-        <Card.Text>{el.description}</Card.Text>
-        <Button variant="primary" style={styles.btn}>Next Page</Button>
-        <Button variant="primary" style={styles.btn}>Save</Button>
+        <Card.Text style={styles.desc}>{el.description}</Card.Text>
+        <Button variant="primary" style={styles.btn}>
+          Next Page
+        </Button>
+        <Button variant="primary" style={styles.btn}>
+          Save
+        </Button>
       </Card.Body>
     </Card>
   );
@@ -21,26 +25,34 @@ const styles = {
     height: "100%",
     width: "30%",
     margin: "1%",
-    border: "1px solid black",
     textAlign: "left",
+    borderRadius: 20,
+    boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
   },
   img: {
-    width: "100%",
+    width: "90%",
     height: 300,
+    margin: "5% 5% 0",
   },
   source: {
     marginTop: 0,
     fontSize: 14,
+    margin: "0 5%",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    margin: "3% 5% 3%",
+  },
+  desc: {
+    margin: "0 5% 3%",
   },
   btn: {
     width: "20%",
     bottom: 0,
     marginRight: 15,
-  }
+    margin: "5%",
+  },
 };
 
 export default NewsContainer;
