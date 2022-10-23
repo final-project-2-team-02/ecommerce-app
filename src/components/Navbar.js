@@ -1,23 +1,28 @@
 import { Link } from "react-router-dom";
+import { useNav } from "../hooks/Navbar.hook";
+import { getCategories } from "../utils/datas/getCategories";
 import SearchBar from "./SearchBar";
 
 const Navbar = () => {
+  const categories = getCategories();
+  const { str, handleStr } = useNav();
+
   return (
     <div style={styles.container}>
       <nav style={styles.nav}>
-        <Link style={styles.navItem} to="/">
-          Indonesia
-        </Link>
-        <Link style={styles.navItem} to="/programming">
-          Programming
-        </Link>
-        <Link style={styles.navItem} to="/covid-19">
-          COVID-19
-        </Link>
-        <Link style={styles.navItem} to="/saved">
-          Saved
-        </Link>
+        {categories.map((category, i) => (
+          <Link
+            key={i}
+            style={styles.navItem}
+            to={`${category.route}`}
+            className="navItem"
+            onClick={handleStr}
+          >
+            {category.name}
+          </Link>
+        ))}
       </nav>
+      <div style={styles.news}>{str} News</div>
       <div style={styles.search}>
         <SearchBar />
       </div>
@@ -27,13 +32,15 @@ const Navbar = () => {
 
 const styles = {
   container: {
-    backgroundColor: "white",
+    backgroundColor: "#EEEEEE",
     display: "flex",
+    alignItems: "center",
     padding: "10px 0",
-    borderTop: "1px solid grey",
     borderBottom: "5px double black",
     position: "sticky",
     top: 0,
+    zIndex: 1,
+    fontFamily: "'Roboto', sans-serif",
   },
   nav: {
     display: "flex",
@@ -41,7 +48,13 @@ const styles = {
   },
   navItem: {
     padding: "0 5%",
-    textDecoration: "none",
+    color: "black",
+  },
+  news: {
+    flex: 1,
+    fontSize: 35,
+    fontWeight: "bold",
+    fontFamily: "'Domine', serif",
   },
   search: {
     flex: 1,
