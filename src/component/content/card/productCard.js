@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import './card.css'
 
 export const ProductCard = ({ data }) => {
@@ -19,7 +20,10 @@ export const ProductCard = ({ data }) => {
                 <p>{data.val.rating.rate} | {data.val.rating.count}</p>
             </div>
             <div class="button item">
-                <div class="price">$ {data.val.price}</div>
+                <Link to={`/${data.val.title}`} >
+
+                    <div class="price">$ {data.val.price}</div>
+                </Link>
                 <div class="cart">
                     <img alt='kamu'
                         src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
