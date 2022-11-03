@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.view {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fefcf4;
+  position: relative;
+}
+.view .header {
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  padding: 0 48px;
+  width: 100%;
+  min-height: 80px;
+  background-color: #fefcf4;
+  /* box-shadow: 0px 0.5px 3px 0.3px rgba(209, 209, 209, 1); */
+  border-bottom: 1px solid #596148;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.view .header .searching {
+  /* background-color: aqua; */
+  width: 50%;
+  height: 30px;
+  border-radius: 24px;
+  position: relative;
+}
+.view .header .searching input {
+  width: 100%;
+  height: 100%;
+  /* border-radius: 24px; */
+  outline: none;
+  outline-color: #4a6700;
+  padding: 5px;
+  border: 2px solid #596148;
+  border-radius: 8px;
+}
+.view .header .searching img {
+  position: absolute;
+  height: 18px;
+  width: auto;
+  right: 0;
+  /* top: 1px; */
+  margin: 5px 10px;
+}
+
+.view .header .fitur {
+  background-color: #b6f719;
+  /* border: #b3f312 2px solid; */
+
+  border-radius: 24px;
+  width: 100px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  color: #141f00;
+}
+.view .content {
+  margin-top: 80px;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-auto-rows: 80px;
+  grid-auto-flow: dense;
+  grid-gap: 16px 10px;
+  padding: 24px 48px;
+}
+.view .content .banner {
+  overflow: hidden;
+  position: relative;
+  /* width: 100%;
+      height: 320px; */
+  grid-column: span 5;
+  grid-row: span 4;
+  /* display: grid; */
+  background-color: #b3f312;
+  padding: 10px 24px;
+  border-radius: 12px;
+}
+.view .content .banner .siar {
+  color: #141f00;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.view .content .banner .siar h1 {
+  font-size: 36px;
+}
+.view .content .banner .siar p {
+  font-size: 18px;
+}
+.view .content .banner .hiasan {
+  position: absolute;
+  right: -100px;
+  top: 10px;
+  height: calc(100% - 20px);
+  width: 60%;
+  background-color: #fff;
+  transform: skew(-20deg);
+}
+.view .content .banner img {
+  filter: grayscale(100%);
+  position: absolute;
+  height: 150px;
+  width: auto;
+  padding: auto;
+  z-index: 1;
+  /* right: 110px; */
+}
+.view .content .banner #satu {
+  right: 60px;
+  top: 39%;
+}
+.view .content .banner #dua {
+  top: 60px;
+  right: 250px;
+}
+.view .content .banner #tiga {
+  right: 460px;
+  top: 38%;
+}
+.view .content .catalog {
+  grid-column: span 5;
+  /* grid-row: span 0.5; */
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #596148;
+  grid-row-gap: 24px;
+  color: #4a6700;
+  font-size: 20px;
+}
+.view .content .card {
+  background-color: #fefcf4;
+  overflow: hidden;
+  position: relative;
+  padding: 12px;
+  /* display: grid; */
+  grid-column: span 1;
+  grid-row: span 4;
+  /* background-color: #b3f312; */
+  /* box-shadow: 1px 2px 11px 0px rgba(209, 209, 209, 1); */
+  border-radius: 6px 6px 3px 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: #596148 1px solid;
+  /* transition: 0.5s; */
+}
+.view .content .card:hover {
+  box-sizing: border-box;
+  border: #b3f312 1px solid;
+  /* transition: 0.5s; */
+}
+.view .content .card .pict {
+  width: auto;
+  height: 170px;
+}
+.view .content .card .title {
+  color: #121212;
+  margin: 10px 0 6px 0;
+  font-size: 14px;
+  font-weight: lighter;
+  width: 100%;
+  height: 32px;
+  line-height: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+.view .content .card .rate {
+  display: flex;
+  width: 100%;
+  /* background-color: #b3f312; */
+  font-size: 0.85rem;
+  align-items: center;
+  color: #596148;
+}
+.view .content .card .rate img {
+  height: 16px;
+  width: auto;
+  margin-right: 8px;
+}
+.view .content .card .rate p {
+  margin: 0;
+}
+.view .content .card .button {
+  margin-top: 12px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.view .content .card .button .cart {
+  padding: 6px 10px;
+  background-color: #b6f719;
+  color: #141f00;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.view .content .card .button .cart img {
+  height: 20px;
+  width: auto;
+}
+.view .content .card .button .price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #4a6700;
+  cursor: pointer;
+}
