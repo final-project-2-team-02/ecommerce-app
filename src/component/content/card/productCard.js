@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-// import './card.css'
 
 export const ProductCard = ({ data }) => {
     const navi = useNavigate()

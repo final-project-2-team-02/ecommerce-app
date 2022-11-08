@@ -27,7 +27,6 @@ export const Login = () => {
                 console.log('email salah');
             }
         })
-        // navigate('/')
     }
 
     if (localStorage.getItem('token')) {

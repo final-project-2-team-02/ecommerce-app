@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import './header.css'
 
 export const Header = () => {
     const isFill = localStorage.getItem('token')

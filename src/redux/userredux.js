@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-// const user_url = 'https://fakestoreapi.com/users'
 const initialState = {
     user: [],
 };

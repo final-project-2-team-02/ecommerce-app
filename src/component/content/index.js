@@ -9,8 +9,6 @@ import { login } from '../../redux/loginredux'
 
 export const Content = () => {
     const dispach = useDispatch()
-    // const [dia, setDia] = useState('')
-    // const product = useSelector((state) => state.ecom.product)
     const { product } = useSelector((state) => state.ecom)
     const { user } = useSelector((state) => state.user)
     const { userLogin } = useSelector((state) => state.data)
@@ -26,7 +24,6 @@ export const Content = () => {
         dispach(fetchUser(urlUser))
     }
     useEffect(() => {
-        // setDia(user)
         fetching()
         auth()
         console.log(userLogin);
@@ -37,7 +34,6 @@ export const Content = () => {
             <Catalog />
             {product.map((val, ind) => (
                 <ProductCard data={val} key={ind} />
-                // <div key={ind}>{JSON.stringify(val)}</div>
             ))}
         </div>
     )

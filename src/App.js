@@ -1,8 +1,6 @@
-import { Tab } from "bootstrap";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Content } from "./component/content";
-import { Header } from "./component/header/header";
 import { Tampil } from "./pages/coba";
 import { Detail } from "./pages/detail";
 import { Login } from "./pages/login";
@@ -14,7 +12,6 @@ function App() {
     <section className="view">
       <Routes>
         <Route path="/" element={<Tampil />}>
-
           <Route index element={<Content />} />
           <Route path="/:id" element={<Detail />} />
         </Route>
