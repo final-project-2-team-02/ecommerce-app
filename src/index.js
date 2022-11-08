@@ -7,18 +7,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import { Listaja } from "./pages/listtampil";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-
-
-
     <BrowserRouter>
       <App />
-      {/* <Market /> */}
-      {/* <Tampil /> */}
-      {/* <Content /> */}
+      {/* <Listaja /> */}
     </BrowserRouter>
   </Provider>
   // <ProSidebarProvider>

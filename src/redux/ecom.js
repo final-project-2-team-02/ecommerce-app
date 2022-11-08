@@ -28,7 +28,7 @@ const marketSlice = createSlice({
             .addCase(fetchMarket.fulfilled, (state, action) => {
                 const list = []
                 action.payload.map((val) => (
-                    list.push({ val, jumlah: 20, requ: 0 })
+                    list.push({ val, jumlah: 20 })
                 ))
                 console.log(action.payload);
                 return { ...state, product: list, loading: false };

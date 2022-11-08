@@ -1,8 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 // import './card.css'
 
 export const ProductCard = ({ data }) => {
+    const navi = useNavigate()
+    const check = () => {
+        if (localStorage.getItem('token')) {
+            navi(`/${data.val.title}`)
+        }
+        else {
+            navi('/login')
+        }
+    }
     return (
         <div class="card">
             <img alt='kamu'
@@ -24,7 +34,7 @@ export const ProductCard = ({ data }) => {
 
                     <div class="price">$ {data.val.price}</div>
                 </Link>
-                <div class="cart">
+                <div class="cart" onClick={check}>
                     <img alt='kamu'
                         src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
                     />

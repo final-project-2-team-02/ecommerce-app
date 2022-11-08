@@ -1,34 +1,39 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const Detail = () => {
+    const { product } = useSelector((state) => state.ecom)
+    const { id } = useParams()
+    const barang = product.find((pro) => {
+        return pro.val.title === id
+    })
     return (
-
 
         <>
             <div class="content2">
                 <div class="kiri">
                     <img
                         class="pict"
-                        src="https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg"
+                        src={barang.val.image}
                         alt=""
                     />
                 </div>
                 <div class="kanan">
                     <h3>
-                        Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops wkwkwk kwkwkw
-                        kwkwkw
+                        {id}
                     </h3>
                     <div class="rate">
                         <img alt='kamu'
                             src="https://img.icons8.com/ios-filled/50/FAB005/christmas-star.png"
                         />
-                        <p>4.5 | sold 100</p>
+                        <p>{barang.val.rating.rate} | sold {barang.val.rating.count}</p>
                     </div>
-                    <h4>$ 9.99</h4>
+                    <h4>$ {barang.val.price}</h4>
                     <div class="isi">
                         <div class="left">category</div>
                         <div class="righ">
-                            <p>men's clothing</p>
+                            <p>{barang.val.category}</p>
                         </div>
                     </div>
                     <div class="isi">
@@ -52,12 +57,7 @@ export const Detail = () => {
                 </div>
                 <div class="detail">
                     <p>
-                        Slim-fitting style, contrast raglan long sleeve, three-button henley
-                        placket, light weight & soft fabric for breathable and comfortable
-                        wearing. And Solid stitched shirts with round neck made for
-                        durability and a great fit for casual fashion wear and diehard
-                        baseball fans. The Henley style round neckline includes a
-                        three-button placket.
+                        {barang.val.description}
                     </p>
                 </div>
             </div>
