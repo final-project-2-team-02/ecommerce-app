@@ -15,7 +15,10 @@ export const productSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(
       fetchProducts.fulfilled,
-      (state, action) => (state = action.payload)
+      (state, action) =>
+        (state = action.payload.map((item) => {
+          return { ...item, quantity: 20 } as Product;
+        }))
     );
   },
 });

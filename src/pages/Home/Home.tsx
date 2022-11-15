@@ -1,12 +1,12 @@
 import React from "react";
 
-import CardProduct from "components/CardProduct";
+import CardProduct from "components/CardProduct/CardProduct";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "redux/reducer/StoreApi";
+import { fetchProducts } from "redux/reducer/productReducer";
 import { AppDispatch } from "redux/store";
 import { Product } from "types/product";
-import { RootState } from "../redux/store";
-import { Container, Box } from "@mui/material";
+import { RootState } from "../../redux/store";
+import { Container, Box, Typography } from "@mui/material";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,10 +20,11 @@ export default function Home() {
     (state) => state.products
   ) as Product[];
 
-  console.log(productsData);
-
   return (
-    <Container maxWidth={"lg"} sx={{ mt: 10 }}>
+    <Container maxWidth={"lg"}>
+      <Typography variant="h3" my={4}>
+        Products
+      </Typography>
       <Box
         sx={{
           display: "grid",
@@ -32,12 +33,7 @@ export default function Home() {
         }}
       >
         {productsData.map((item, id) => (
-          <CardProduct
-            key={id}
-            title={item.title}
-            img={item.image}
-            price={item.price}
-          />
+          <CardProduct key={id} productItem={item} />
         ))}
       </Box>
     </Container>
