@@ -8,6 +8,14 @@ export type Product = {
   quantity: number;
   rating: {
     rate: number;
-    count: number
-  }
+    count: number;
+  };
+};
+
+export type ProductSold = {
+  id: number | string;
+  title: string;
+  price: number;
+  image: string;
+  quantity: number;
 };

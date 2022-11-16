@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "redux/store";
 import Table from "@mui/material/Table";
@@ -13,12 +13,17 @@ import { CartProductItem } from "types/cart";
 import { formatter } from "utils/currencyFormatter";
 import Typography from "@mui/material/Typography";
 import { editQuantityItem } from "redux/reducer/cartReducer";
+import { addProductSold } from "redux/reducer/adminDataReducer";
 
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>();
   const cartProduct = useSelector<RootState>(
     (state) => state.cart
   ) as CartProductItem[];
+
+  const handleCheckout = () => {
+    dispatch(addProductSold(cartProduct))
+  };
 
   return (
     <Container>
@@ -93,6 +98,11 @@ export default function Cart() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Box display="flex" width="100%" justifyContent="end" mt={5}>
+        <Button variant="contained" onClick={handleCheckout}>
+          Checkout
+        </Button>
+      </Box>
     </Container>
   );
 }

@@ -52,7 +52,7 @@ export default function ProductDetails() {
             justifyContent: "space-between",
           }}
         >
-          <Box>
+          <Box mb={5}>
             <Typography
               variant="h4"
               fontWeight={700}
@@ -75,6 +75,9 @@ export default function ProductDetails() {
               fontWeight={500}
             >
               {productItem.description}
+            </Typography>
+            <Typography mt={2} variant="body1" fontWeight={600}>
+              Stock {productItem.quantity}
             </Typography>
             <input
               type="number"
