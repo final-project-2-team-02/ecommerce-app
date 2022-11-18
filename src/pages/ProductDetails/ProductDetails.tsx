@@ -5,7 +5,7 @@ import { Product } from "types/product";
 import { formatter } from "utils/currencyFormatter";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "redux/store";
-import { addCartDiffQuantity } from "redux/reducer/cartReducer";
+import { addCartDiffQuantity } from "redux/slices/cartSlice";
 import { CartProductItem } from "types/cart";
 
 export default function ProductDetails() {

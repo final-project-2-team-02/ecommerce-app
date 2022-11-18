@@ -6,16 +6,17 @@ export type Product = {
   description: string;
   image: string;
   quantity: number;
-  rating: {
+  rating?: {
     rate: number;
     count: number;
   };
 };
 
-export type ProductSold = {
+export type SoldProduct = {
   id: number | string;
   title: string;
   price: number;
   image: string;
   quantity: number;
+  category: string
 };

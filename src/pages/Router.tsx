@@ -4,6 +4,8 @@ import Cart from "./Cart/Cart";
 import Home from "./Home/Home";
 import Login from "./Login/Login";
 import ProductDetails from "./ProductDetails/ProductDetails";
+import ProductStock from "./ProductStock/ProductStock";
+import SalesRecap from "./SalesRecap/SalesRecap";
 
 export default function Router() {
   return (
@@ -12,6 +14,8 @@ export default function Router() {
       <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/admin/sales" element={<SalesRecap />} />
+      <Route path="/admin/stock" element={<ProductStock />} />
     </Routes>
   );
 }

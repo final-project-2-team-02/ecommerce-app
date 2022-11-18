@@ -1,8 +1,5 @@
 import React from "react";
-
 import {
-  Box,
-  Button,
   Container,
   Table,
   TableBody,
@@ -13,40 +10,21 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "redux/store";
-import { clearCart, editQuantityItem } from "redux/slices/cartSlice";
-
-import { CartProductItem } from "types/cart";
+import { useSelector } from "react-redux";
+import { RootState } from "redux/store";
+import { SoldProduct } from "types/product";
 import { formatter } from "utils/currencyFormatter";
-import { addSoldProducts } from "redux/slices/productSlice/productSlice";
 
-export default function Cart() {
-  const dispatch = useDispatch<AppDispatch>();
-  const cartProduct = useSelector<RootState>(
-    (state) => state.cart
-  ) as CartProductItem[];
-
-  const handleCheckout = () => {
-    dispatch(addSoldProducts(cartProduct));
-    dispatch(clearCart());
-  };
-
-  const handleChangeQty = (
-    event: React.FormEvent<HTMLInputElement>,
-    id: number
-  ) => {
-    dispatch(
-      editQuantityItem({
-        id: id,
-        quantity: parseInt(event.currentTarget.value),
-      })
-    );
-  };
+export default function SalesRecap() {
+  const soldProduct = useSelector<RootState>(
+    (state) => state.products.soldProducts
+  ) as SoldProduct[];
 
   return (
-    <Container maxWidth="md">
+    <Container sx={{minHeight: "100vh", mb: 10}}>
+      <Typography variant="h5" fontWeight={500} mt={5}>
+        Sales Recap
+      </Typography>
       <TableContainer component={Paper} sx={{ mt: 5 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -59,7 +37,7 @@ export default function Cart() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {cartProduct.map((item, id) => (
+            {soldProduct.map((item, id) => (
               <TableRow
                 key={id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -72,18 +50,12 @@ export default function Cart() {
                   ></img>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {item.title}
+                  <Typography>{item.title}</Typography>
+                  <Typography variant="caption" mt={2}>
+                    {item.category}
+                  </Typography>
                 </TableCell>
-                <TableCell align="center">
-                  <input
-                    type="number"
-                    name="quantity"
-                    id="quantity"
-                    min={1}
-                    value={item.quantity}
-                    onChange={(e) => handleChangeQty(e, item.id)}
-                  />
-                </TableCell>
+                <TableCell align="center">{item.quantity}</TableCell>
                 <TableCell align="right">
                   {formatter.format(item.price)}
                 </TableCell>
@@ -100,7 +72,7 @@ export default function Cart() {
               <TableCell align="right">
                 <Typography fontWeight={600}>
                   {formatter.format(
-                    cartProduct.reduce(
+                    soldProduct.reduce(
                       (acc, item) => acc + item.price * item.quantity,
                       0
                     )
@@ -111,11 +83,6 @@ export default function Cart() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box display="flex" width="100%" justifyContent="end" mt={5}>
-        <Button variant="contained" onClick={handleCheckout}>
-          Checkout
-        </Button>
-      </Box>
     </Container>
   );
 }
