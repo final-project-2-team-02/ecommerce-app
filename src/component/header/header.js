@@ -1,11 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+// import { useSelector } from 'react-redux'
+// import { useNavigate } from 'react-router-dom'
 
 export const Header = () => {
     const isFill = localStorage.getItem('token')
+    const navi = useNavigate()
+    // const { userLogin } = useSelector((state) => state.persistedReducer.data)
     return (
         <div class="header">
-            <h3>Tokopakedi</h3>
+            <Link to='/tampil'>
+
+                <h3>Tokopakedi</h3>
+            </Link>
             <div class="searching">
                 <input type="text" name="" id="" />
                 <img alt='key'
@@ -14,8 +21,9 @@ export const Header = () => {
             </div>
             {
                 isFill ?
-                    <div class="dia">
+                    <div class="dia" >
                         <img alt='kamu'
+                            onClick={() => navi('/cart')}
                             src="https://img.icons8.com/material-outlined/24/000000/shopping-cart--v1.png"
                         />
                         <Link to='/login'>

@@ -1,13 +1,41 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { inputCart } from '../redux/ecom'
 
 export const Detail = () => {
-    const { product } = useSelector((state) => state.ecom)
+    const navi = useNavigate()
+    const { product } = useSelector((state) => state.persistedReducer.ecom)
+    const dispach = useDispatch()
     const { id } = useParams()
     const barang = product.find((pro) => {
         return pro.val.title === id
     })
+    const [value, setValue] = useState(barang.cart)
+    console.log(barang);
+    const min = () => {
+        if (value > 0) {
+            setValue(value - 1)
+        }
+    }
+    const add = () => {
+        setValue(value + 1)
+    }
+    const cartval = () => {
+        dispach(inputCart({ value, id: barang.val.id }))
+        navi('/')
+
+    }
+    const cart = () => {
+        if (localStorage.getItem('token')) {
+            // navi('/cart')
+            dispach(inputCart({ value, id: barang.val.id }))
+            navi('/')
+        } else {
+            navi('/login')
+        }
+        // dispach(tambah({ data, name: 'aku' }))
+    }
     return (
 
         <>
@@ -37,16 +65,22 @@ export const Detail = () => {
                         </div>
                     </div>
                     <div class="isi">
+                        <div class="left">Stok</div>
+                        <div class="righ">
+                            <p>{barang.jumlah}</p>
+                        </div>
+                    </div>
+                    <div class="isi">
                         <div class="left">quantity</div>
                         <div class="righ">
-                            <div class="btn">-</div>
-                            <p>13</p>
-                            <div class="btn">+</div>
+                            <div class="btn" onClick={min}>-</div>
+                            <p>{value}</p>
+                            <div class="btn" onClick={add}>+</div>
                         </div>
                     </div>
 
                     <div class="fungsi">
-                        <div class="keranjang">Masukkan Keranjang</div>
+                        <div class="keranjang" onClick={cart}>Masukkan Keranjang</div>
                         <div class="belanja">Belanja Sekarang</div>
                     </div>
                 </div>
